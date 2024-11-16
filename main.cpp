@@ -25,12 +25,36 @@ int main() {
         car.print();
     }
 
+    int timecount = 0; 
+
     while (!booth.empty()) {
+        timecount++;
+
         int prob = rand() % 100;
 
-        if (pro)
+        if (prob < 55) {
+            //car at head pays toll and leaves
+            //use booth.front() and booth.pop_front()
+            Car newcar = Car();
+            cout << "Time: " << timecount << "  |  Operation: Car paid: " << car.print() << endl;
+            cout << "Queue:\n";
+        }
+        else {
+            //new car joins booth
+            //use booth.push_back()
+            cout << "Time: " << timecount << "  |  Operation: Car joined lane : " << car.print() << endl;
 
+        }
 
+            cout << "Queue:\n";
+            for(auto car : booth) {
+                cout << "\t";
+                car.print();
+            }
+
+            if (booth.empty()) {
+                cout << "Empty.\n";
+            }
     }
 
 
