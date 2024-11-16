@@ -35,15 +35,16 @@ int main() {
         if (prob < 55) {
             //car at head pays toll and leaves
             //use booth.front() and booth.pop_front()
-            Car newcar = Car();
-            cout << "Time: " << timecount << "  |  Operation: Car paid: " << car.print() << endl;
-            cout << "Queue:\n";
+            Car headcar = booth.front();
+            cout << "Time: " << timecount << "  |  Operation: Car paid: "; headcar.print();
+            booth.pop_front();
         }
         else {
             //new car joins booth
             //use booth.push_back()
-            cout << "Time: " << timecount << "  |  Operation: Car joined lane : " << car.print() << endl;
-
+            Car newcar = Car();
+            booth.push_back(newcar);
+            cout << "Time: " << timecount << "  |  Operation: Car joined lane : "; newcar.print();
         }
 
             cout << "Queue:\n";
@@ -52,8 +53,10 @@ int main() {
                 car.print();
             }
 
+            cout << endl;
+
             if (booth.empty()) {
-                cout << "Empty.\n";
+                cout << "\t-----Empty.-----\n\n";
             }
     }
 
