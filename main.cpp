@@ -67,19 +67,26 @@ int main() {
                 //last car changes lanes
                 Car lastcar = plaza[lane].back();
                 cout << "Lane: " << lane + 1 << " | Switched: "; lastcar.print();
-                int randlane = rand() % 4 + 1;
-                if (randlane != (lane + 1)) {
-                    plaza[lane].pop_back();
-                    plaza[randlane].push_back(lastcar);
+                int randlane = rand() % 4;
+
+                while (randlane == lane) {
+                   randlane = rand() % 4; 
                 }
+                plaza[lane].pop_back();
+                plaza[randlane].push_back(lastcar);
             }
-        
-            if (lane.empty()) {
+
+            if (plaza[lane].empty()) {
                 int secondprob = rand() % 100;
                 if (secondprob < 50) {
-                //new car add to end
+                    Car newcar = Car();
+                    plaza[lane].push_back(newcar);
+                    cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
                 }
             }
+
+            //print queues
+            plaza[lane]
         }
 
 
