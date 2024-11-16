@@ -74,7 +74,10 @@ int main() {
                 }
             }
 
-            //print queues
+        }
+
+        //print queues
+        for (int lane = 0; lane < PLAZASIZE; lane++) {
             cout << "Lane " << lane + 1 << " Queue:\n";
             if (plaza[lane].empty()) {
                 cout << "\tEmpty.\n";
