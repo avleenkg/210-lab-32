@@ -35,40 +35,42 @@ int main() {
 
     for (int time = 0; time < 20; time++) {
         cout << "Time: " << time + 1 << endl;
-        int prob = rand() % 100;
 
         for (int lane = 0; lane < PLAZASIZE; lane++) {
-            if (prob < PROB1) {
-                //car at head pays toll and leaves
-                Car headcar = plaza[lane].front();
-                cout << "Lane: " << lane + 1 << " | Paid: "; headcar.print();
-                plaza[lane].pop_front();
-            }
-            else if (prob > PROB1 && prob < (PROB1 + PROB2)) {
-                //another car joins end
-                Car newcar = Car();
-                plaza[lane].push_back(newcar);
-                cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
-            }
-            else if (prob > (PROB1 + PROB2) and prob > (PROB1 + PROB2 + PROB3)) {
-                //last car changes lanes
-                Car lastcar = plaza[lane].back();
-                cout << "Lane: " << lane + 1 << " | Switched: "; lastcar.print();
-                int randlane = rand() % 4;
-
-                while (randlane == lane) {
-                   randlane = rand() % 4; 
+            int prob = rand() % 100;
+            if (!plaza[lane].empty()){
+                if (prob < PROB1) {
+                    //car at head pays toll and leaves
+                    Car headcar = plaza[lane].front();
+                    cout << "Lane: " << lane + 1 << " | Paid: "; headcar.print();
+                    plaza[lane].pop_front();
                 }
-                plaza[lane].pop_back();
-                plaza[randlane].push_back(lastcar);
-            }
-
-            if (plaza[lane].empty()) {
-                int secondprob = rand() % 100;
-                if (secondprob < 50) {
+                else if (prob >= PROB1 && prob <= (PROB1 + PROB2)) {
+                    //another car joins end
                     Car newcar = Car();
                     plaza[lane].push_back(newcar);
                     cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
+                }
+                else if (prob >= (PROB1 + PROB2) and prob > (PROB1 + PROB2 + PROB3)) {
+                    //last car changes lanes
+                    Car lastcar = plaza[lane].back();
+                    cout << "Lane: " << lane + 1 << " | Switched: "; lastcar.print();
+                    int randlane = rand() % 4;
+
+                    while (randlane == lane) {
+                    randlane = rand() % 4; 
+                    }   
+                    plaza[lane].pop_back();
+                    plaza[randlane].push_back(lastcar);
+                }
+
+                if (plaza[lane].empty()) {
+                    int secondprob = rand() % 100;
+                    if (secondprob < 50) {
+                        Car newcar = Car();
+                        plaza[lane].push_back(newcar);
+                        cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
+                    }
                 }
             }
 
