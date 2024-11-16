@@ -16,9 +16,8 @@ int main() {
     srand(time(0));
 
     deque<Car> booth;
-    deque<Car> lane1, lane2, lane3, lane4;
 
-    deque<Car> plaza[PLAZASIZE] =  {lane1, lane2, lane3, lane4};
+    deque<Car> plaza[PLAZASIZE];
 
     /*for (int i = 0; i < ISIZE; i++) {
         booth.push_back(Car()); //call Car -> calls constructor to generate random car
@@ -31,13 +30,10 @@ int main() {
     }
     */
 
-    int timecount = 0; 
-
-    for (int j = 0; j < ISIZE; j++ ) {
-        lane1.push_back(Car());
-        lane2.push_back(Car());
-        lane3.push_back(Car());
-        lane4.push_back(Car()); 
+    for (int lanes = 0; lanes < PLAZASIZE; lanes++ ) {
+        for (int car = 0; car < ISIZE; car++){
+            plaza[lanes].push_back(Car());
+        }
     }
     cout << "Initial Queue:\n";
     for (int lanes = 0; lanes < PLAZASIZE; lanes++) {
@@ -50,7 +46,20 @@ int main() {
 
 
     for (int time = 0; time < 20; time++) {
+        cout << "Time: " << time + 1 << endl;
+        int prob = rand() % 100;
 
+        if (prob < 46) {
+            //car at head pays toll and leaves
+        }
+        else if (prob > 46 && prob < 85) {
+            //another car joins end
+        }
+        else if (prob > 85 && prob < 100) {
+            //last car changese lanes
+        }
+        
+        if (//lane is empty) {}
 
 
 
