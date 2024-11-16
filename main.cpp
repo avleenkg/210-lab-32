@@ -9,12 +9,15 @@
 #include "Car.h"
 using namespace std;
 
-const int ISIZE = 2; //represents cars already in line 
+const int ISIZE = 3; //represents cars already in line 
 
 int main() {
     srand(time(0));
 
     deque<Car> booth;
+    deque<Car> lane1, lane2, lane3, lane4;
+
+    deque<Car> plaza[4];
 
     for (int i = 0; i < ISIZE; i++) {
         booth.push_back(Car()); //call Car -> calls constructor to generate random car
@@ -27,6 +30,17 @@ int main() {
     }
 
     int timecount = 0; 
+
+    for (int j = 0; j < ISIZE; j++ ) {
+        lane1. 
+    }
+
+    for (int time = 0; time < 20; time++) {
+
+
+
+
+    }
 
     while (!booth.empty()) {
         timecount++;
