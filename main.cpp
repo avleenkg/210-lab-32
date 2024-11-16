@@ -49,18 +49,33 @@ int main() {
         cout << "Time: " << time + 1 << endl;
         int prob = rand() % 100;
 
-        if (prob < 46) {
-            //car at head pays toll and leaves
-        }
-        else if (prob > 46 && prob < 85) {
-            //another car joins end
-        }
-        else if (prob > 85 && prob < 100) {
-            //last car changese lanes
-        }
+        for (int lane = 0; lane < PLAZASIZE; lane++) {
+            if (prob < 46) {
+                //car at head pays toll and leaves
+                Car headcar = plaza[lane].front();
+                cout << "Lane: " << lane + 1 << " | Paid: "; headcar.print();
+                plaza[lane].pop_back();
+            }
+            else if (prob > 46 && prob < 85) {
+                //another car joins end
+                Car newcar = Car();
+                plaza[lane].push_back(newcar);
+                cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
+            }
+            else if (prob > 85 && prob < 100) {
+                //last car changese lanes
+                Car lastcar = plaza[lane].back();
+                cout << "Lane: " << lane + 1 << " | Switched: "; lastcar.print();
+                int randlane = rand() % 4 + 1
+            }
         
-        if (//lane is empty) {}
-
+            if (lane.empty()) {
+                int secondprob = rand() % 100;
+                if (secondprob < 50) {
+                //new car add to end
+                }
+            }
+        }
 
 
     }
