@@ -11,6 +11,7 @@ using namespace std;
 
 const int ISIZE = 3; //represents cars already in line 
 const int PLAZASIZE = 4;
+const int PROB1 = 46, PROB2 = 39, PROB3 = 15;
 
 int main() {
     srand(time(0));
@@ -50,23 +51,27 @@ int main() {
         int prob = rand() % 100;
 
         for (int lane = 0; lane < PLAZASIZE; lane++) {
-            if (prob < 46) {
+            if (prob < PROB1) {
                 //car at head pays toll and leaves
                 Car headcar = plaza[lane].front();
                 cout << "Lane: " << lane + 1 << " | Paid: "; headcar.print();
                 plaza[lane].pop_back();
             }
-            else if (prob > 46 && prob < 85) {
+            else if (prob < PROB1 + PROB2) {
                 //another car joins end
                 Car newcar = Car();
                 plaza[lane].push_back(newcar);
                 cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
             }
-            else if (prob > 85 && prob < 100) {
-                //last car changese lanes
+            else if (prob < (PROB1 + PROB2 + PROB3)) {
+                //last car changes lanes
                 Car lastcar = plaza[lane].back();
                 cout << "Lane: " << lane + 1 << " | Switched: "; lastcar.print();
-                int randlane = rand() % 4 + 1
+                int randlane = rand() % 4 + 1;
+                if (randlane != (lane + 1)) {
+                    plaza[lane].pop_back();
+                    plaza[randlane].push_back(lastcar);
+                }
             }
         
             if (lane.empty()) {
