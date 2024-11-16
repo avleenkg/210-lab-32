@@ -45,13 +45,13 @@ int main() {
                     cout << "Lane: " << lane + 1 << " | Paid: "; headcar.print();
                     plaza[lane].pop_front();
                 }
-                else if (prob >= PROB1 && prob <= (PROB1 + PROB2)) {
+                else if (prob >= PROB1 && prob < (PROB1 + PROB2)) {
                     //another car joins end
                     Car newcar = Car();
                     plaza[lane].push_back(newcar);
                     cout << "Lane: " << lane + 1 << " | Joined: "; newcar.print();
                 }
-                else if (prob >= (PROB1 + PROB2) and prob > (PROB1 + PROB2 + PROB3)) {
+                else if (prob >= (PROB1 + PROB2) and prob < (PROB1 + PROB2 + PROB3)) {
                     //last car changes lanes
                     Car lastcar = plaza[lane].back();
                     cout << "Lane: " << lane + 1 << " | Switched: "; lastcar.print();
