@@ -10,6 +10,7 @@
 using namespace std;
 
 const int ISIZE = 3; //represents cars already in line 
+const int PLAZASIZE = 4;
 
 int main() {
     srand(time(0));
@@ -17,9 +18,9 @@ int main() {
     deque<Car> booth;
     deque<Car> lane1, lane2, lane3, lane4;
 
-    deque<Car> plaza[4];
+    deque<Car> plaza[PLAZASIZE] =  {lane1, lane2, lane3, lane4};
 
-    for (int i = 0; i < ISIZE; i++) {
+    /*for (int i = 0; i < ISIZE; i++) {
         booth.push_back(Car()); //call Car -> calls constructor to generate random car
     }
 
@@ -28,12 +29,25 @@ int main() {
         cout << "\t";
         car.print();
     }
+    */
 
     int timecount = 0; 
 
     for (int j = 0; j < ISIZE; j++ ) {
-        lane1. 
+        lane1.push_back(Car());
+        lane2.push_back(Car());
+        lane3.push_back(Car());
+        lane4.push_back(Car()); 
     }
+    cout << "Initial Queue:\n";
+    for (int lanes = 0; lanes < PLAZASIZE; lanes++) {
+        cout << "Lane " << lanes + 1 << ":\n";
+        for (auto cars : plaza[lanes]) {
+            cout << "\t";
+            cars.print();
+        }
+    }
+
 
     for (int time = 0; time < 20; time++) {
 
@@ -42,7 +56,7 @@ int main() {
 
     }
 
-    while (!booth.empty()) {
+    /*while (!booth.empty()) {
         timecount++;
 
         int prob = rand() % 100;
@@ -73,7 +87,7 @@ int main() {
             if (booth.empty()) {
                 cout << "\t-----Empty.-----\n\n";
             }
-    }
+    }*/
 
 
 
